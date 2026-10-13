@@ -1,18 +1,14 @@
 package com.example.a24012011009_mad_practical_5
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -23,15 +19,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent { // lambda function
-            _24012011009_MAD_Practical5Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginScreen()
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-                }
+        setContent {
+            _24012011009_MAD_Practical5Theme{
+                AppNavigation(this)
             }
         }
     }
@@ -48,15 +38,14 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    _24012011009_MAD_Practical5Theme {
+    _24012011009_MAD_Practical5Theme{
         Greeting("Android")
     }
 }
-
 @Composable
 @Preview
 fun ButtonDemo(){
-    var counter by remember { mutableStateOf(1) }
+    var counter by remember { mutableIntStateOf(1) }
     Button(
         onClick = {
             counter+=1
